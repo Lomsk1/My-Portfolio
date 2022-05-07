@@ -1,0 +1,554 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Radley:ital@1&display=swap");
+
+$fonts-weights: (
+  "normal": 400,
+  "bold": 700,
+);
+
+$color-primary: #6f7a8a;
+$color-green: #00d646;
+
+.hidden {
+  display: none;
+}
+.section--hidden {
+  opacity: 0;
+}
+
+@media (max-width: 380px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@mixin flexCenter($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  height: 100px;
+  background-color: $color-primary;
+  @include flexCenter(row);
+  justify-content: space-evenly;
+  z-index: 10;
+
+  .nav__links {
+    @include flexCenter(row);
+    list-style-type: none;
+
+    .nav__item {
+      margin-left: 2em;
+      .nav__link {
+        text-decoration: none;
+        font-family: "PT Serif", serif;
+        $font-weight: bold;
+        color: #495264;
+        &:hover {
+          color: rgb(43, 39, 39);
+          transition: 700ms;
+        }
+        &:active {
+          color: $color-green;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 750px) {
+    .nav__links {
+      display: none;
+    }
+
+    .nav_mobile-button {
+      @include flexCenter(row);
+      background-color: transparent;
+      border: none;
+      width: max-content;
+      cursor: pointer;
+    }
+  }
+}
+.nav-mobile-div {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 11;
+  background-color: #333b50;
+
+  .nav__links {
+    height: 100%;
+    @include flexCenter(column);
+    list-style-type: none;
+    justify-content: space-between;
+
+    .nav__item {
+      margin-left: 0;
+      margin-bottom: 4em;
+      .nav__link {
+        text-decoration: none;
+        font-family: "PT Serif", serif;
+        font-weight: 700;
+        color: white;
+        font-size: 2em;
+        &:hover {
+          color: rgb(43, 39, 39);
+          transition: 700ms;
+        }
+        &:active {
+          color: $color-green;
+        }
+      }
+    }
+  }
+}
+
+.section {
+  width: 100%;
+  height: 100vh;
+}
+
+.home {
+  background-image: url("../images/87270857_3178479745518298_4952458408843280384_n.jpg");
+  @include background;
+  @include flexCenter(column);
+
+  .intro {
+    width: 30%;
+    height: 70%;
+    background-color: transparent;
+
+    .title-span {
+      color: white;
+      font-size: 3rem;
+      font-family: "PT Serif", serif;
+      font-weight: 700;
+      line-height: 1.3em;
+
+      span {
+        color: $color-green;
+      }
+    }
+    .work-span {
+      color: white;
+      font-size: 1.5rem;
+      font-family: "PT Serif", serif;
+      font-weight: 400;
+    }
+  }
+  @media (max-width: 500px) {
+    .intro {
+      width: 80%;
+      height: 80%;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .intro {
+      width: 90%;
+      height: 90%;
+    }
+  }
+}
+
+.CV {
+  background-image: url("../images/1_3eoEyJ3LZYXBHb0g85y4qw.jpeg");
+  @include background;
+
+  #{&}-box {
+    width: 50%;
+    height: 80%;
+    background-color: #333b50;
+    margin: auto;
+    transform: translateY(-30%);
+    @include flexCenter(column);
+    justify-content: space-evenly;
+    color: white;
+    font-family: Radley, serif;
+    letter-spacing: 0.2em;
+  }
+
+  a {
+    background-color: transparent;
+    border: 1px solid $color-green;
+    font-family: "PT Serif", serif;
+    font-weight: 700;
+    width: 25%;
+    height: 35px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    &:hover {
+      background-color: $color-green;
+      color: white;
+      transition: 700ms;
+    }
+  }
+
+  .resume{
+    width: 80%;
+    height: 30%;
+    background-color: #495264;
+    transform: translateY(-50%);
+    margin: auto;
+    @include flexCenter(column);
+
+
+    .cv-title{
+      width: 100%;
+      height: 20%;
+      @include flexCenter(column);
+
+      p{
+        font-size: 1.5rem;
+        font-family: "PT Serif", serif;
+        font-weight: 700;
+        color: white;
+      }
+    }
+
+    .cv-knowledge{
+      width: 100%;
+      height: 80%;
+      @include flexCenter(row);
+      
+      p{
+        font-family: "PT Serif", serif;
+        font-weight: 400;
+        color: white;
+        padding-left: 1.5em;
+      }
+    }
+  
+  }
+
+  @media (max-width: 850px) {
+    #{&}-box {
+      width: 80%;
+      height: 80%;
+      transform: translateY(-20%);
+      h2 {
+        text-align: center;
+      }
+    }
+
+    .cv-knowledge{
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 500px) {
+    #{&}-box {
+      width: 80%;
+      height: 80%;
+      h2 {
+        text-align: center;
+      }
+    }
+    button {
+      width: max-content;
+    }
+
+    .cv-knowledge{
+      overflow: scroll;
+    }
+  }
+}
+
+.experience {
+  background-image: url("../images/alpine-446b6162d85f569b8f3a79d815c4da7f5b618c1c-s1100-c50.jpg");
+  @include background;
+  @include flexCenter(column);
+
+  &-title {
+    width: 100%;
+    height: 20%;
+    background-color: rgba(#495264, 0.5);
+    @include flexCenter(column);
+    p {
+      font-family: "PT Serif", serif;
+      font-weight: 700;
+      font-size: 2.3rem;
+      color: white;
+    }
+  }
+  &-main {
+    width: 100%;
+    height: 80%;
+
+
+  }
+}
+
+.portfolio {
+  background-color: #495264;
+  @include flexCenter(column);
+
+  &-title {
+    width: 100%;
+    height: 20%;
+    background-color: rgba(#333b50, 0.2);
+    @include flexCenter(column);
+    p {
+      font-family: "PT Serif", serif;
+      font-weight: 700;
+      font-size: 2.3rem;
+      color: white;
+    }
+  }
+  &-main {
+    width: 100%;
+    height: 80%;
+    @include flexCenter(column);
+    p {
+      font-family: "PT Serif", serif;
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: white;
+    }
+    a {
+      text-decoration: none;
+      color: #333b50;
+      letter-spacing: 0.2em;
+      margin-left: 1em;
+
+      &:hover {
+        color: grey;
+        transition: 700ms;
+      }
+      &:active {
+        color: $color-green;
+      }
+    }
+  }
+
+  // .slides{
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   width:80%;
+  //   height:80%;
+  //   background-color: brown;
+  //   overflow: hidden;
+
+
+  //   img{
+  //     width: 100%;
+  //     height: 100%;
+  //     object-fit: cover;
+  //   }
+
+  //   .one{
+  //     transform: translateX(0%);
+  //   }
+  //   .two{
+  //     transform: translateX(100%);
+  //   }
+  //   .three{
+  //     transform: translateX(200%);
+  //   }
+
+  // }
+
+  @media (max-width: 415px) {
+    &-main {
+      p {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+  }
+  @media (max-width: 375px) {
+    &-main {
+      p {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.contact {
+  background-image: url("../images/contact_us.jpg");
+  @include background;
+  @include flexCenter(column);
+  &-main {
+    width: 80%;
+    height: 80%;
+    background-color: #495264;
+    @include flexCenter(row);
+
+    .information {
+      width: 50%;
+      height: 100%;
+      @include flexCenter(column);
+      p {
+        align-self: flex-start;
+        padding: 2em;
+        font-family: "PT Serif", serif;
+        font-weight: 400;
+        color: white;
+        span {
+          color: white;
+          font-family: "PT Serif", serif;
+          font-weight: 700;
+          font-size: 1.5rem;
+        }
+      }
+      address {
+        align-self: flex-start;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+    .inputs {
+      width: 50%;
+      height: 100%;
+      @include flexCenter(column);
+
+      form {
+        width: 80%;
+        height: 90%;
+        label {
+          font-family: "PT Serif", serif;
+          font-weight: 700;
+          color: white;
+          font-size: 1.5rem;
+        }
+        input {
+          width: 100%;
+          border-radius: 5px;
+          padding: 0.3em;
+          font-family: "PT Serif", serif;
+          font-weight: 400;
+          font-size: 1.5rem;
+          border: 1px solid $color-green;
+        }
+        input:focus {
+          outline: none;
+          border: 1px solid red;
+        }
+        textarea {
+          resize: none;
+          width: 100%;
+          height: 5em;
+          padding: 0.3rem;
+          font-family: "PT Serif", serif;
+          font-weight: 400;
+          font-size: 1.5rem;
+
+          &:focus {
+            outline: none;
+            border: 1px solid red;
+          }
+        }
+        input[type="submit"] {
+          background-color: transparent;
+          border: 1px solid $color-green;
+          font-family: "PT Serif", serif;
+          font-weight: 700;
+          width: 50%;
+          cursor: pointer;
+          color: white;
+          &:hover {
+            background-color: $color-green;
+            color: white;
+            transition: 700ms;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    &-main {
+      width: 90%;
+      height: 90%;
+      flex-direction: column;
+
+      .information {
+        height: 40%;
+        p {
+          font-size: 1em;
+          padding: 0;
+        }
+      }
+      .inputs {
+        height: 60%;
+        width: 80%;
+        form {
+          width: 100%;
+          height: 100%;
+          label {
+            font-size: 1em;
+          }
+          input {
+            font-size: 1em;
+          }
+          textarea {
+            font-size: 1em;
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 1600px) {
+    .inputs {
+      form {
+        @include flexCenter(column);
+      }
+    }
+  }
+}
+
+footer {
+  width: 100%;
+  height: 20vh;
+  background-color: #495264;
+  @include flexCenter(row);
+  justify-content: space-around;
+
+  .img {
+    width: 30%;
+    height: 100%;
+    @include flexCenter(row);
+  }
+  .copy {
+    width: 60%;
+    height: 100%;
+    @include flexCenter(row);
+    p {
+      font-family: "PT Serif", serif;
+      font-weight: 400;
+    }
+  }
+
+  .social {
+    width: 30%;
+    height: 100%;
+    @include flexCenter(row);
+    justify-content: space-evenly;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
